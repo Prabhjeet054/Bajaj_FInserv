@@ -1,6 +1,11 @@
-function ErrorBanner({ message }) {
-  if (!message) return null;
-  return <div className="error-banner">{message}</div>;
+export default function ErrorBanner({ message, onClose }) {
+  return (
+    <div className="error-banner" role="alert">
+      <span className="error-icon">❌</span>
+      <span className="error-message">{message}</span>
+      <button className="error-close" onClick={onClose} aria-label="Close">
+        ✕
+      </button>
+    </div>
+  );
 }
-
-export default ErrorBanner;
