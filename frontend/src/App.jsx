@@ -7,6 +7,7 @@ import { callBFHL } from "./api/bfhl";
 import "./styles/app.css";
 
 export default function App() {
+  const [theme, setTheme] = useState("light");
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
@@ -32,10 +33,15 @@ export default function App() {
   }
 
   return (
-    <div className="app-container">
+    <div className="app-container" data-theme={theme}>
       <header className="app-header">
-        <h1>🌳 BFHL Tree Visualizer</h1>
-        <p>Enter node relationships to build and visualize hierarchical trees</p>
+        <div>
+          <h1>BFHL Tree Visualizer</h1>
+          <p>Enter node relationships and view hierarchy results.</p>
+        </div>
+        <button className="btn btn-secondary btn-sm" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+          {theme === "light" ? "Dark Mode" : "Light Mode"}
+        </button>
       </header>
 
       <main className="app-main">
